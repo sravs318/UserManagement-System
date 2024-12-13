@@ -1,0 +1,66 @@
+<h2 *ngIf="isEditMode">EditForm</h2>
+<h2 *ngIf="!isEditMode">CreateForm</h2>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name"/>
+  </div>
+  <div>
+   <label>Gender</label>
+   <input type="radio" formControlName="gender" value="male"/>Male
+   <input type="radio" formControlName="gender" value="female"/>Female
+  </div>
+  <div>
+    <label for="hobbies">Hobbies:</label>
+    <input type="checkbox" formControlName="hobbies1" label="reading"/>Reading
+    <input type="checkbox" formControlName="hobbies2" label="swimming"/>Swimming
+    <input type="checkbox" formControlName="hobbies3" label="dancing"/>Dancing
+  </div>
+  <div>
+    <label for="dob">DOB</label>
+    <input id="dob" formControlName="dob" type="date"/>
+  </div>
+  <div>
+    <label for="age">AGE</label>
+    <input id="age" formControlName="age"  type="number"/>
+
+  </div>
+  <div>
+    <label for="salary">Salary</label>
+    <input id="salary" formControlName="salary" type="number"/>
+    <select formControlName="currency">
+      <option value="INR">₹ INR</option>
+      <option value="USD">$ USD</option>
+    </select>
+  </div>
+  <div>
+    <label for="colors">Colors:</label>
+    <select multiple formControlName="colors">
+      <option value="red">RED</option>
+      <option value="black">Black</option>
+      <option value="white">White</option>
+    </select>
+
+  </div>
+  <div>
+    <label  for="address">Address:</label>
+    <textarea id="address" formControlName="address"></textarea>
+  </div>
+  <div>
+    <label for="postalCode">PostalCode:</label>
+    <input id="postalCode"  formControlName="postalCode"  type="number"/>
+    <div *ngIf="userForm.get('postalCode')?.errors?.['pattern']">invalid pattern</div>
+
+
+  </div>
+  <div>
+    <label for="phoneNumber">PhoneNumber</label>
+    <input id="phoneNumber" formControlName="phoneNumber" type="tel">
+    <div *ngIf="userForm.get('phoneNumber')?.errors?.['pattern']">phoneNumber should be 10 numbers</div>
+  </div>
+  <div>
+    <button *ngIf="isEditMode">Save</button>
+    <button *ngIf="!isEditMode">Submit</button>
+  </div>
+
+</form>

@@ -1,0 +1,37 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Hobbies</th>
+      <th>DOB</th>
+      <th>AGE</th>
+      <th>Salary</th>
+      <th>Colors</th>
+      <th>Address</th>
+      <th>PhoneNumber</th>
+      <th>PostalCode</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users;let i=index">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.gender}}</td>
+      <td>{{user.hobbies.join(', ')}}</td>
+      <td>{{user.dob}}</td>
+      <td>{{user.age}}</td>
+      <td>{{user.salary | currency:'INR'}}</td>
+      <td>{{user.colors.join(', ')}}</td>
+      <td>{{user.address}}</td>
+      <td>{{user.phoneNumber}}</td>
+      <td>{{user.postalCode}}</td>
+      <td>
+        <button (click)="onEdit(user)">Edit</button>
+        <button (click)="onDelete(user.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
